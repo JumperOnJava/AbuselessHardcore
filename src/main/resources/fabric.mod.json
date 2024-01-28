@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "abuselesshardcore",
+  "version": "${version}",
+  "name": "AbuselessHardcore",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/JavaJumper/AbuselessHardcore"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/abuselesshardcore/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "io.github.jumperonjava.abuselesshardcore.client.AbuselessHardcoreClient"
+    ],
+    "main": [
+      "io.github.jumperonjava.abuselesshardcore.AbuselessHardcore"
+    ]
+  },
+  "mixins": [
+    "abuselesshardcore.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

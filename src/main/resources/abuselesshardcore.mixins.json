@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.jumperonjava.abuselesshardcore.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ServerPlayerAccessor",
+    "SessionMixin",
+    "world.LevelInfoMixin",
+    "world.LevelPropertiesMixin"
+  ],
+  "client": [
+    "ClientPlayerMixin",
+    "DeathScreenMixin",
+    "OpenToLanScreenMixin",
+    "ServerPlayerEntityMixin",
+    "world.CreateWorldScreenMixin",
+    "world.GameTabMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
