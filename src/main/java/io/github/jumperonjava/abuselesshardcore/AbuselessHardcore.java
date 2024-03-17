@@ -12,7 +12,6 @@ public class AbuselessHardcore implements ModInitializer {
     @Override
     public void onInitialize() {
         ServerTickEvents.END_SERVER_TICK.register((minecraftServer)->{
-
             if(MinecraftClient.getInstance().player!=null)
                     ((LevelInfoDeleteWorld)MinecraftClient.getInstance().player).setAhc_deleteWorld(((LevelInfoDeleteWorld)minecraftServer.getWorld(World.OVERWORLD).getLevelProperties()).getAhc_deleteWorld());
         });

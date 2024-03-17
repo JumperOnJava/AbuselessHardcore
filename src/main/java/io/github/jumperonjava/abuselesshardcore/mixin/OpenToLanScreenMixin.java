@@ -1,5 +1,7 @@
 package io.github.jumperonjava.abuselesshardcore.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import io.github.jumperonjava.abuselesshardcore.AbuselessHardcore;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Element;
@@ -23,11 +25,12 @@ public class OpenToLanScreenMixin {
             }
         return instance.values(values);
     }
-    @Redirect(method = "init", at = @At(value = "INVOKE",target = "Lnet/minecraft/client/gui/screen/OpenToLanScreen;addDrawableChild(Lnet/minecraft/client/gui/Element;)Lnet/minecraft/client/gui/Element;",ordinal = 1))
-    private Element removeButtonIfHardcode(OpenToLanScreen instance, Element element) {
+
+    @WrapOperation(method = "init", at = @At(value = "INVOKE",target = "Lnet/minecraft/client/gui/screen/OpenToLanScreen;addDrawableChild(Lnet/minecraft/client/gui/Element;)Lnet/minecraft/client/gui/Element;",ordinal = 1))
+    private Element removeButtonIfHardcode(OpenToLanScreen instance, Element element, Operation<Element> original) {
         if (AbuselessHardcore.clientIsHardcore())
             return null;
-        return element;
+        return original.call(instance,element);
     }
     @ModifyConstant(method = "init",constant = @Constant(intValue = 155,ordinal = 0))
     private int moveButton(int i){

@@ -39,20 +39,18 @@ public abstract class LevelInfoMixin implements LevelInfoDeleteWorld {
     private static void getDynamic(Dynamic<?> dynamic, DataConfiguration dataConfiguration, CallbackInfoReturnable<LevelInfo> cir){
         dynamic_ = dynamic;
     }
-    @Redirect(method = "withCopiedGameRules",at = @At(value = "NEW",target = "(Ljava/lang/String;Lnet/minecraft/world/GameMode;ZLnet/minecraft/world/Difficulty;ZLnet/minecraft/world/GameRules;Lnet/minecraft/resource/DataConfiguration;)Lnet/minecraft/world/level/LevelInfo;"))
-    private LevelInfo level_(
-            String name,
-            GameMode gameMode,
-            boolean hardcore,
-            Difficulty difficulty,
-            boolean allowCommands,
-            GameRules gameRules,
-            DataConfiguration dataConfiguration
-    )
-    {
-        var info = new LevelInfo(name, gameMode, hardcore, difficulty, allowCommands, gameRules, dataConfiguration);
-        ((LevelInfoDeleteWorld)(Object)info).setAhc_deleteWorld(this.ahc_deleteWorld);
-        return info;
+                    @Redirect(method = "withCopiedGameRules",at = @At(value = "NEW",target = "(Ljava/lang/String;Lnet/minecraft/world/GameMode;ZLnet/minecraft/world/Difficulty;ZLnet/minecraft/world/GameRules;Lnet/minecraft/resource/DataConfiguration;)Lnet/minecraft/world/level/LevelInfo;"))
+                          private                             LevelInfo level_(
+                      String name,                            GameMode gameMode,
+                     boolean hard,                            Difficulty difficulty,
+            boolean allowCommands,                            GameRules gameRules,
+            DataConfiguration dataConfiguration)              {var info =
+            new LevelInfo(name, gameMode, hardcore,
+
+                                                        difficulty, allowCommands, gameRules,
+                                                        dataConfiguration); ((LevelInfoDeleteWorld)
+                                                        (Object)info).setAhc_deleteWorld(this
+                                                        .ahc_deleteWorld);return info;
     }
 
     @WrapOperation(method = "fromDynamic",at = @At(value = "NEW",target = "(Ljava/lang/String;Lnet/minecraft/world/GameMode;ZLnet/minecraft/world/Difficulty;ZLnet/minecraft/world/GameRules;Lnet/minecraft/resource/DataConfiguration;)Lnet/minecraft/world/level/LevelInfo;"))
